@@ -9,13 +9,14 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r load packages and read in data}
+## R Markdown
 
-library(tidyverse)
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
+```{r}
 data <- read_csv("GHG.csv")
-
 ```
+
 
 
 
@@ -67,3 +68,14 @@ soilm
 apply(soilm, c(1,2), isdrought, thresh=0.4)
 ```
 
+=======
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+>>>>>>> parent of 71b18f9... now added data
