@@ -9,11 +9,6 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
-getwd()
-
-```
-
 
 ```{r load packages and read in data}
 
