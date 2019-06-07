@@ -19,7 +19,6 @@ library(tidyverse)
 data <- read_csv("GHG.csv")
 ```
 
-
 ## Summarize: Average natural gas emissions by year
 ```{r}
 ng_emissions = data %>% 
@@ -49,33 +48,25 @@ emisisons_year #look at what casey posts
 
 # add useful names
 
-dimnames(emissions_year) = list(c("Farm1","Farm2","Farm3","Farm4","Farm5"), 
-                      c("apple","avocado","orange","almond"),
+dimnames(emissions_year) = list(c("Transportation", "Electricity Generation", "Residential", "Commercial",                               "Industrial"), 
+                      c("Coal", "Diesel", "Gasoline", "Natural Gas"),
                       c("2010", "2016"))
 
 
 #  use your own function to calculte impact - maybe set a limit and see what secotra are above? If you are "TRUE" you get a fine - add up the total fines for 2010 and 2016?
-isdrought = function(sm, thresh) {
-  n = length(sm)
-  drought=TRUE
+co2fine = function(type, thresh) {
+  n = length(type)
+  fine=100000
   for (i in 1:n) {
-    if (sm[i] > thresh) drought=FALSE
+    if (type[i] > thresh) fine=0
   }
-  return(drought)
+  return(fine)
 }
-soilm
-#local drought
-apply(soilm, c(1,2), isdrought, thresh=0.4)
+emisisons_year
+#exceeds
+apply(emisisons_year, c(1,2), co2fine, thresh=50)
+
+#tells you if the sector will get a 100000 fine, therefore quantifying impacts
+
 ```
 
-=======
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
->>>>>>> parent of 71b18f9... now added data
