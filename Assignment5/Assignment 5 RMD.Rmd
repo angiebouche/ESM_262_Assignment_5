@@ -13,7 +13,57 @@ knitr::opts_chunk$set(echo = TRUE)
 
 library(tidyverse)
 
-data <- read_csv("Greenhouse_Gas_Emissions_From_Fuel_Combustion_By_Fuel_Type_Million_Metric_Tons.csv")
+data <- read_csv("GHG.csv")
 
+```
+
+
+
+## Summarize: Average natural gas emissions by year
+```{r}
+ng_emissions = data %>% 
+  filter(Fuel_Type == "Natural Gas") %>% 
+  select(Total_CO2_Emissions) %>% 
+  summarize(mean = (sum(Total_CO2_Emissions)/7))
+
+```
+
+
+##Summarize: Add up total emisisons by year
+```{r}
+annual_emissions = data %>% 
+  group_by(Year) %>% 
+  summarize(sum_col = sum(Total_CO2_Emissions)) %>%  
+  arrange(-Year) %>% 
+  head(10)
+
+```
+
+## Array:
+```{r}
+
+emisisons_year = array(dim=c(5,4,2))
+dim(emisisons_year)
+emisisons_year #look at what casey posts
+
+# add useful names
+
+dimnames(emissions_year) = list(c("Farm1","Farm2","Farm3","Farm4","Farm5"), 
+                      c("apple","avocado","orange","almond"),
+                      c("2010", "2016"))
+
+
+#  use your own function to calculte impact - maybe set a limit and see what secotra are above? If you are "TRUE" you get a fine - add up the total fines for 2010 and 2016?
+isdrought = function(sm, thresh) {
+  n = length(sm)
+  drought=TRUE
+  for (i in 1:n) {
+    if (sm[i] > thresh) drought=FALSE
+  }
+  return(drought)
+}
+soilm
+#local drought
+apply(soilm, c(1,2), isdrought, thresh=0.4)
 ```
 
