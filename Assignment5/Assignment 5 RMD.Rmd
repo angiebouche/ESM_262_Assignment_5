@@ -9,11 +9,17 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r}
+getwd()
+
+```
+
+
 ```{r load packages and read in data}
 
 library(tidyverse)
 
-data <- read_csv("Greenhouse_Gas_Emissions_From_Fuel_Combustion_By_Fuel_Type_Million_Metric_Tons.csv")
+data <- read_csv("Greenhouse_Gas_Emissions_From_Fuel_Combustion__By_Fuel_Type__Million_Metric_Tons.csv")
 
 ```
 
