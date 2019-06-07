@@ -68,5 +68,10 @@ apply(emisisons_year, c(1,2), co2fine, thresh=50)
 
 #tells you if the sector will get a 100000 fine, therefore quantifying impacts
 
+
+#each ton is $1,000 cost - easier econ cost for emissions
+emissions_cost = emisisons_year*1000
+emissions_cost
+
 ```
 
