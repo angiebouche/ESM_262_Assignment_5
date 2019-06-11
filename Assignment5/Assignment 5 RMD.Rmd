@@ -15,6 +15,9 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 
 ```{r}
 library(tidyverse)
+library(testthat)
+library(dplyr)
+library(devtools)
 
 data <- read_csv("GHG.csv")
 ```
@@ -42,8 +45,14 @@ annual_emissions = data %>%
 ## Array:
 ```{r}
 
-emisisons_year = array(dim=c(5,4,2))
-dim(emisisons_year)
+data_for_array <- filter(data, Fuel_Type =="Coal"|"Diesel Fuel (Distillate)"|"Gasoline"|"Natural Gas") 
+  gather(data, key ="Fuel_Type", value = "Emissions", Transportation, Electricity_Generation, Residential, Commercial, Industrial, -Total_CO2_Emissions, -Percent_Total_CO2_Emissions, na.rm = TRUE) 
+
+emisisons_year = array(data = data_for_array, 
+dim=c(5,4,2),
+dimnames = list(c('Transportation', 'Electricity_Generation', 'Residential', 'Commercial', 'Industrial'),
+                paste('Fuel_Type'),
+                c(2010,2016)))
 emisisons_year #look at what casey posts
 
 # add useful names
@@ -68,5 +77,38 @@ apply(emisisons_year, c(1,2), co2fine, thresh=50)
 
 #tells you if the sector will get a 100000 fine, therefore quantifying impacts
 
+
+#each ton is $1,000 cost - econ cost for emissions
+emissions_cost = emisisons_year*1000
+emissions_cost
+
+```
+
+
+
+##Possible Tests
+```{r}
+usethis::use_test()
+
+
+test_that("Data from 2019 is not included", {
+  expect_false(add_total_emissions_year(Year="2019"))
+})
+
+test_that("Average natural gas emissions are numerical", {
+  expect_is(average_ng("result"), "numeric")
+})
+
+
+test_that("Test that the average natural gas emissions in 2016 were 165.85", {
+expect_true(annual_emissions(Year = "2016", sum_col = "165.85"))
+})
+
+```
+##Vinette
+```{r}
+
+use_vignette("overview")
+build_vignettes()
 ```
 

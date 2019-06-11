@@ -1,11 +1,12 @@
 Package: Assignment5
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Analyze Emissions of Various FUel TYpes in Business Sectors (2010-2016)
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: Joslyn Fritz and Angie Bouche
+Maintainer: abouche@ucsb.edu
+Description: Final assignment for ESM 262. See Vignette for more information.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+Suggests: knitr, rmarkdown
+VignetteBuilder: knitr

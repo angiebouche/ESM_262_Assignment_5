@@ -1,0 +1,22 @@
+---
+title: "Assignment 5 Vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(tidyverse)
+library(devtools)
+
+install(buld_vignettes=TRUE)
+build_vignettes()
+library(Assignment5)
+
+```
