@@ -15,17 +15,41 @@ knitr::opts_chunk$set(
 )
 ```
 
+
+## Setup and suggested packages
 ```{r setup}
 library(Assignment5)
 library(tidyverse)
 library(devtools)
+library(dplyr)
 
 install(build_vignettes=TRUE)
 build_vignettes()
 library(Assignment5)
+
+ghg <- read_csv("GHG.csv")
+
 ```
 
 This is assignment 5 for ESM 262 - Environmental Computing. We created multiple functions using data about US CO2 emissions from different industries and different emission sources. Additionaly, for some areas to run smoother we created data. This was to understand how to run certain parts of the assignment like test_that functions. 
 
 Function Descriptions: 
+
+##Calculating summary statistics used in function in R Markdown
+```{r}
+# Summarize: Average natural gas emissions by year
+ng_emissions = ghg %>% 
+  filter(Fuel_Type == "Natural Gas") %>% 
+  select(Total_CO2_Emissions) %>% 
+  summarize(mean = (sum(Total_CO2_Emissions)/7))
+
+#Summarize: Add up total emisisons by year
+annual_emissions = ghg %>% 
+  group_by(Year) %>% 
+  summarize(sum_col = sum(Total_CO2_Emissions)) %>%  
+  arrange(-Year) %>% 
+  head(10)
+
+```
+
 
