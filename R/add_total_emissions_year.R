@@ -6,9 +6,9 @@
 #' @author Joslyn Fritz and Angie Bouche
 #' @example load in ghg dataset with fuel type, sector and year to sum total emissions
 
-add_total_emissions_year.R = function(ghg_em_year) {
+add_total_emissions_year = function(ghg_em_year) {
 
-    annual_emissions = ghg_em_year +
+    annual_emissions = ghg_em_year %>%
     dplyr::group_by(Year) %>%
     dplyr::summarize(sum_col = sum(Total_CO2_Emissions)) %>%
     dplyr::arrange(-Year) %>%
