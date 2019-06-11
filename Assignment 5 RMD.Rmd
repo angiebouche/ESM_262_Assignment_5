@@ -19,7 +19,7 @@ library(testthat)
 library(dplyr)
 library(devtools)
 
-data <- read_csv("GHG.csv")
+ghg <- read_csv("GHG.csv")
 ```
 
 ## Summarize: Average natural gas emissions by year
@@ -95,8 +95,10 @@ test_that("Data from 2019 is not included", {
   expect_false(add_total_emissions_year(Year="2019"))
 })
 
+source("R/average_ng.R")
 test_that("Average natural gas emissions are numerical", {
-  expect_is(average_ng("result"), "numeric")
+  data(ghg)
+  expect_is(average_ng(data_ng = ghg), "numeric")
 })
 
 
@@ -112,3 +114,5 @@ use_vignette("overview")
 build_vignettes()
 ```
 
+
+fcuntion, 

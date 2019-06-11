@@ -1,12 +1,15 @@
 Package: Assignment5
 Type: Package
-Title: Analyze Emissions of Various FUel TYpes in Business Sectors (2010-2016)
+Title: Analyze Emissions of Various Fuel Types in Business Sectors (2010-2016)
 Version: 0.1.0
 Author: Joslyn Fritz and Angie Bouche
-Maintainer: abouche@ucsb.edu
+Maintainer: Angie <abouche@ucsb.edu>
 Description: Final assignment for ESM 262. See Vignette for more information.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
-Suggests: knitr, rmarkdown
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat
 VignetteBuilder: knitr
