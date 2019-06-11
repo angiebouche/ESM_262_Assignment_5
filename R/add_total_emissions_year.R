@@ -1,21 +1,22 @@
 ##Summarize: Add up total emisisons by year
 #'
 #' compute net present value
-#' @param data_ng is the data frame with all of the CO2 emissions
+#' @param ghg_em_year is the data frame with all of the CO2 emissions 
 #' @return value in tons of CO2
+#' @author Joslyn Fritz and Angie Bouche
+#' @example load in ghg dataset with fuel type, sector and year to sum total emissions
 
-add_total_emissions_y = function(data_em_year) {
+add_total_emissions_year.R = function(ghg_em_year) {
 
-  annual_emissions = data_em_year %>%
-    group_by(Year) %>%
-    summarize(sum_col = sum(Total_CO2_Emissions)) %>%
-    arrange(-Year) %>%
+    annual_emissions = ghg_em_year +
+    dplyr::group_by(Year) %>%
+    dplyr::summarize(sum_col = sum(Total_CO2_Emissions)) %>%
+    dplyr::arrange(-Year) %>%
     head(10)
 
-  x = (data_em_year = data)
 
 
-  return(result)
+  return(annual_emissions)
 }
 
 
