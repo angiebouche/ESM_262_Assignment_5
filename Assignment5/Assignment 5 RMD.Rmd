@@ -16,6 +16,8 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 ```{r}
 library(tidyverse)
 library(testthat)
+library(dplyr)
+library(devtools)
 
 data <- read_csv("GHG.csv")
 ```
@@ -99,5 +101,11 @@ test_that("Test that the average natural gas emissions in 2016 were 165.85", {
 expect_true(annual_emissions(Year = "2016", sum_col = "165.85"))
 })
 
+```
+##Vinette
+```{r}
+
+use_vignette("overview")
+build_vignettes()
 ```
 
