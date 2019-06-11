@@ -15,6 +15,7 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 
 ```{r}
 library(tidyverse)
+library(testthat)
 
 data <- read_csv("GHG.csv")
 ```
@@ -42,8 +43,11 @@ annual_emissions = data %>%
 ## Array:
 ```{r}
 
-emisisons_year = array(dim=c(5,4,2))
-dim(emisisons_year)
+emisisons_year = array(data = data, 
+dim=c(5,4,2),
+dimnames = list(paste('Transportation', 'Electricity_Generation', 'Residential', 'Commercial', 'Industrial'),
+                paste('Fuel_Type'),
+                paste(2010,2016)))
 emisisons_year #look at what casey posts
 
 # add useful names
@@ -69,9 +73,31 @@ apply(emisisons_year, c(1,2), co2fine, thresh=50)
 #tells you if the sector will get a 100000 fine, therefore quantifying impacts
 
 
-#each ton is $1,000 cost - easier econ cost for emissions
+#each ton is $1,000 cost - econ cost for emissions
 emissions_cost = emisisons_year*1000
 emissions_cost
+
+```
+
+
+
+##Possible Tests
+```{r}
+usethis::use_test()
+
+
+test_that("Data from 2019 is not included", {
+  expect_false(add_total_emissions_year(Year="2019"))
+})
+
+test_that("Average natural gas emissions are numerical", {
+  expect_is(average_ng("result"), "numeric")
+})
+
+
+test_that("Test that the average natural gas emissions in 2016 were 165.85", {
+expect_true(annual_emissions(Year = "2016", sum_col = "165.85"))
+})
 
 ```
 
