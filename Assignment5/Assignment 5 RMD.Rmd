@@ -45,11 +45,14 @@ annual_emissions = data %>%
 ## Array:
 ```{r}
 
-emisisons_year = array(data = data, 
+data_for_array <- filter(data, Fuel_Type =="Coal"|"Diesel Fuel (Distillate)"|"Gasoline"|"Natural Gas") 
+  gather(data, key ="Fuel_Type", value = "Emissions", Transportation, Electricity_Generation, Residential, Commercial, Industrial, -Total_CO2_Emissions, -Percent_Total_CO2_Emissions, na.rm = TRUE) 
+
+emisisons_year = array(data = data_for_array, 
 dim=c(5,4,2),
-dimnames = list(paste('Transportation', 'Electricity_Generation', 'Residential', 'Commercial', 'Industrial'),
+dimnames = list(c('Transportation', 'Electricity_Generation', 'Residential', 'Commercial', 'Industrial'),
                 paste('Fuel_Type'),
-                paste(2010,2016)))
+                c(2010,2016)))
 emisisons_year #look at what casey posts
 
 # add useful names
