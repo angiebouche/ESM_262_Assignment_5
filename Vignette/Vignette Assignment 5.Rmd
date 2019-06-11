@@ -1,4 +1,4 @@
----
+install(buld_vignettes=TRUE)---
 title: "Assignment 5 Vignette"
 output: rmarkdown::html_vignette
 vignette: >
