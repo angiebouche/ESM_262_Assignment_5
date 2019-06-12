@@ -19,10 +19,11 @@ knitr::opts_chunk$set(
 library(Assignment5)
 library(tidyverse)
 library(devtools)
-
+build_vignettes()
 # install(build_vignettes=TRUE)
 library(Assignment5)
 vignette(vignette1)
+
 ```
 
 This is assignment 5 for ESM 262 - Environmental Computing. We created multiple functions using data about US CO2 emissions from different industries and different emission sources. Additionaly, for some areas to run smoother we created data. This was to understand how to run certain parts of the assignment like test_that functions. 
