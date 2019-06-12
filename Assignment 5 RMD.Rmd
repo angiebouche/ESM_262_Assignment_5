@@ -110,7 +110,7 @@ expect_true(annual_emissions(Year = "2016", sum_col = "165.85"))
 ##Vinette
 ```{r}
 
-use_vignette("overview")
+# use_vignette("overview")
 build_vignettes()
 ```
 
