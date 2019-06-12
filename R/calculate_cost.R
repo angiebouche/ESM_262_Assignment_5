@@ -12,8 +12,10 @@ emissions_year = array(1:40, dim=c(5,4,2), #fill array with numbers 1-40 FAKE DA
 
 #each ton is taxed $1,000 - econ cost for emissions for each sector 
 calculate_cost = function(emissions_year) {
-  cost = data(emissions_year) %>% 
+  
+  cost = emissions_year %>% 
   apply(emissions_year, c(1), sum)*100
   return(cost)
+  
 }
 
