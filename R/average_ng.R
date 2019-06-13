@@ -6,9 +6,9 @@
 
 average_ng= function(ghg_data) {
 
-   ng_emissions = ghg_data +
-    dplyr::filter(Fuel_Type == "Natural Gas") +
-    dplyr::select(Total_CO2_Emissions) +
+   ng_emissions = ghg_data %>% 
+    dplyr::filter(Fuel_Type == "Natural Gas") %>% 
+    dplyr::select(Total_CO2_Emissions) %>% 
     dplyr::summarize(mean = (sum(Total_CO2_Emissions)/7))
 
 

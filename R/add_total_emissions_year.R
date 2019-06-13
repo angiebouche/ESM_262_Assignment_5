@@ -6,7 +6,7 @@
 
 add_total_emissions_year= function(ghg_em_year) {
 
-    annual_emissions = ghg_em_year +
+    annual_emissions = ghg_em_year %>% 
     dplyr::group_by(Year) %>%
     dplyr::summarize(sum_col = sum(Total_CO2_Emissions)) %>%
     dplyr::arrange(-Year) %>%
