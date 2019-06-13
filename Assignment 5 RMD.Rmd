@@ -57,10 +57,13 @@ cost = apply(emissions_year, c(1), sum)*1000
 ```
 
 
-#Impact
+#Impact without coal
 ```{r}
 
-
+  less_emissions = ghg%>%
+    dplyr::filter(Fuel_Type != "Coal") %>%
+    dplyr::select(Total_CO2_Emissions) %>%
+    dplyr::summarize((sum(Total_CO2_Emissions)/10*.1))
 
 ```
 
