@@ -40,9 +40,9 @@ data(ghg)
 #use ghg dataset as your argument and filter to see mean emissions of natural gas over the 7 years of data
 average_ng= function(ghg_data) {
 
-   ng_emissions = ghg_data +
-    dplyr::filter(Fuel_Type == "Natural Gas") +
-    dplyr::select(Total_CO2_Emissions) +
+   ng_emissions = ghg_data %>%
+    dplyr::filter(Fuel_Type == "Natural Gas") %>%
+    dplyr::select(Total_CO2_Emissions) %>%
     dplyr::summarize(mean = (sum(Total_CO2_Emissions)/7))
 
   return(ng_emissions$mean)
@@ -56,7 +56,7 @@ average_ng= function(ghg_data) {
 #use ghg dataset. Group by year and find sum total emissions of each year in chronological order
 add_total_emissions_year= function(ghg_em_year) {
 
-    annual_emissions = ghg_em_year +
+    annual_emissions = ghg_em_year %>%
     dplyr::group_by(Year) %>%
     dplyr::summarize(sum_col = sum(Total_CO2_Emissions)) %>%
     dplyr::arrange(-Year) %>%
@@ -79,13 +79,12 @@ emissions_year = array(1:40, dim=c(5,4,2), #fill array with numbers 1-40 FAKE DA
                 dimnames = list(c('Transportation', 'Electricity_Generation', 'Residential', 'Commercial',  'Industrial'), # add column names
               c('Diesel', 'Gasoline', 'Coal', 'Natural Gas'), #add row names
               c(2010,2016))) #one array for 2010, one for 2016
-              emissions_year 
+             
 
 #each ton is taxed $1,000, use function to find economic cost for emissions for each sector. Data was created for array in above code so data is not accurate.
 calculate_cost = function(emissions_year) {
   
-  cost = emissions_year %>% 
-  apply(emissions_year, c(1), sum)*100
+  cost =  apply(emissions_year, c(1), sum)*1000
   return(cost)#apply tax to sum of each secters emissions for both years
   }
 
@@ -97,13 +96,13 @@ calculate_cost = function(emissions_year) {
 ## Calculate Impact: 10 tons of CO2 emissions cause warming of .1 degree C
 ```{r}
 #use ghg dataset and select data on total co2 emissions accross all sectors and years. Divide by 10 since and multiply by .1 to get expected warming. 
-average_ng_cco = function(ghg_data) {
+calc_total_warming = function(ghg_data) {
   
-  global_warming = ghg_data %>%
+  global_warming= ghg_data %>%
     dplyr::select(Total_CO2_Emissions) %>%
-    dplyr::summarize(mean = (sum(Total_CO2_Emissions)/10)*0.1)
+    dplyr::summarize(total = (sum(Total_CO2_Emissions/10*0.1)))
   
-  return(global_warming$mean)
+  return(global_warming$total)
 }
 
 #result is the total warming expected over 2010-2016 for all emissions in that time
