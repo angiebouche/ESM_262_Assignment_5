@@ -79,13 +79,12 @@ emissions_year = array(1:40, dim=c(5,4,2), #fill array with numbers 1-40 FAKE DA
                 dimnames = list(c('Transportation', 'Electricity_Generation', 'Residential', 'Commercial',  'Industrial'), # add column names
               c('Diesel', 'Gasoline', 'Coal', 'Natural Gas'), #add row names
               c(2010,2016))) #one array for 2010, one for 2016
-              emissions_year 
+             
 
 #each ton is taxed $1,000, use function to find economic cost for emissions for each sector. Data was created for array in above code so data is not accurate.
 calculate_cost = function(emissions_year) {
   
-  cost = emissions_year %>% 
-  apply(emissions_year, c(1), sum)*100
+  cost =  apply(emissions_year, c(1), sum)*1000
   return(cost)#apply tax to sum of each secters emissions for both years
   }
 
