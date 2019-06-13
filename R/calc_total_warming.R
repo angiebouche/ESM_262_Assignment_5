@@ -3,7 +3,7 @@
 #' @param ghg_data is the data frame with all of the CO2 emissions from all fuel types and industries
 #' @return amount of planetary warming from CO2 emissions; for every 10 tons of CO2 emitted, the planet warms by 0.1 degrees Celsius. 
 #' @author Joslyn Fritz and Angie Bouche
-#' @example load in ghg dataset with fuel type, compute total emissions then divide by 10 and multiply by 0.1 to figure out the planetary warming from CO2 emissions. 
+#' @example load in ghg dataset with fuel type, compute total emissions then divide by 10 and multiply by 0.1 to figure out the planetary warming from CO2 emissions in celcius. 
 
 calc_total_warming = function(ghg_data) {
   
