@@ -1,5 +1,5 @@
 ---
-title: "Assignment 5 Vignette 1"
+title: "Assignment 5 Vignette"
 author: "Angie and Joslyn"
 output: rmarkdown::html_vignette
 vignette: >
@@ -16,7 +16,6 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(Assignment5)
 library(tidyverse)
 
 # install(build_vignettes=TRUE)
@@ -109,5 +108,6 @@ average_ng_cco = function(ghg_data) {
 
 #result is the total warming expected over 2010-2016 for all emissions in that time
 ```
+
 
 
