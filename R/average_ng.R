@@ -1,9 +1,10 @@
-## Summarize: Average natural gas emissions by year
+#' Summarize: Average natural gas emissions by year
+#'
 #' @param ghg_data is the data frame with all of the CO2 emissions from natural gas
 #' @return value in tons of CO2
 #' @author Joslyn Fritz and Angie Bouche
 #' @example load in ghg dataset with fuel type, sector and year to compute average emissions
-
+#' @export
 average_ng= function(ghg_data) {
 
    ng_emissions = ghg_data +

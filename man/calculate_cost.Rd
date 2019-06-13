@@ -20,11 +20,7 @@ calculate_cost(emissions_year)
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+%%  ~ The sum of the CO2 emissions mutlplied by the $1,000 tax ~
 }
 \references{
 %% ~put references to the literature/web site here ~
