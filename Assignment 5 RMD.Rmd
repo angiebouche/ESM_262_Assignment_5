@@ -24,7 +24,7 @@ ghg <- read_csv("GHG.csv")
 
 ## Summarize: Average natural gas emissions by year
 ```{r}
-ng_emissions = data %>% 
+ng_emissions = ghg %>% 
   filter(Fuel_Type == "Natural Gas") %>% 
   select(Total_CO2_Emissions) %>% 
   summarize(mean = (sum(Total_CO2_Emissions)/7))
@@ -34,7 +34,7 @@ ng_emissions = data %>%
 
 ##Summarize: Add up total emisisons by year
 ```{r}
-annual_emissions = data %>% 
+annual_emissions = ghg %>% 
   group_by(Year) %>% 
   summarize(sum_col = sum(Total_CO2_Emissions)) %>%  
   arrange(-Year) %>% 
@@ -45,42 +45,14 @@ annual_emissions = data %>%
 ## Array:
 ```{r}
 
-data_for_array <- filter(data, Fuel_Type =="Coal"|"Diesel Fuel (Distillate)"|"Gasoline"|"Natural Gas") 
-  gather(data, key ="Fuel_Type", value = "Emissions", Transportation, Electricity_Generation, Residential, Commercial, Industrial, -Total_CO2_Emissions, -Percent_Total_CO2_Emissions, na.rm = TRUE) 
+emissions_year = array(1:40, dim=c(5,4,2), #fill array with numbers 1-40 FAKE DATA
+                dimnames = list(c('Transportation', 'Electricity_Generation', 'Residential', 'Commercial',  'Industrial'),
+              c('Diesel', 'Gasoline', 'Coal', 'Natural Gas'),
+              c(2010,2016))) # add column names
+              emissions_year 
 
-emisisons_year = array(data = data_for_array, 
-dim=c(5,4,2),
-dimnames = list(c('Transportation', 'Electricity_Generation', 'Residential', 'Commercial', 'Industrial'),
-                paste('Fuel_Type'),
-                c(2010,2016)))
-emisisons_year #look at what casey posts
-
-# add useful names
-
-dimnames(emissions_year) = list(c("Transportation", "Electricity Generation", "Residential", "Commercial",                               "Industrial"), 
-                      c("Coal", "Diesel", "Gasoline", "Natural Gas"),
-                      c("2010", "2016"))
-
-
-#  use your own function to calculte impact - maybe set a limit and see what secotra are above? If you are "TRUE" you get a fine - add up the total fines for 2010 and 2016?
-co2fine = function(type, thresh) {
-  n = length(type)
-  fine=100000
-  for (i in 1:n) {
-    if (type[i] > thresh) fine=0
-  }
-  return(fine)
-}
-emisisons_year
-#exceeds
-apply(emisisons_year, c(1,2), co2fine, thresh=50)
-
-#tells you if the sector will get a 100000 fine, therefore quantifying impacts
-
-
-#each ton is $1,000 cost - econ cost for emissions
-emissions_cost = emisisons_year*1000
-emissions_cost
+#each ton is taxed $1,000 - econ cost for emissions for each sector 
+calculate_cost = apply(emissions_year, c(1), sum)*100
 
 ```
 
@@ -98,7 +70,7 @@ test_that("Data from 2019 is not included", {
 source("R/average_ng.R")
 test_that("Average natural gas emissions are numerical", {
   data(ghg)
-  expect_is(average_ng(data_ng = ghg), "numeric")
+  expect_is(average_ng(ghg_ng = ghg), "numeric")
 })
 
 
