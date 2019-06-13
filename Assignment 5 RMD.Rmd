@@ -1,6 +1,6 @@
 ---
 title: "Assignment 5 RMD"
-author: "Angie Bouche"
+author: "Angie Bouche and Joslyn Fritz"
 date: "June 7, 2019"
 output: html_document
 ---
