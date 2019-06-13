@@ -62,28 +62,32 @@ calculate_cost = apply(emissions_year, c(1), sum)*100
 ```{r}
 usethis::use_test()
 
-
+source("R/add_total_emissions_year.R")
 test_that("Data from 2019 is not included", {
-  expect_false(add_total_emissions_year(Year="2019"))
+data(ghg)
+ghg_2019 <- ghg %>% 
+dplyr::filter(Year == 2019)
+expect_false(add_total_emissions_year(ghg_em_year = ghg_2019) > 0)
 })
+
 
 source("R/average_ng.R")
 test_that("Average natural gas emissions are numerical", {
-  data(ghg)
-  expect_is(average_ng(ghg_ng = ghg), "numeric")
+data(ghg)
+expect_is(average_ng(ghg_data = ghg), "numeric")
 })
 
 
+source("R/average_ng.R")
 test_that("Test that the average natural gas emissions in 2016 were 165.85", {
-expect_true(annual_emissions(Year = "2016", sum_col = "165.85"))
+data(ghg)
+ghg_2016 <- ghg %>% 
+dplyr::filter(Year == 2016)
+expect_true(average_ng(ghg_data = ghg_2016) > 165)
 })
 
 ```
-##Vinette
-```{r}
 
-# use_vignette("overview")
-# build_vignettes()
-```
+
 
 

@@ -1,7 +1,5 @@
 ##Summarize: Add up total emisisons by year
-#'
-#' compute net present value
-#' @param ghg_em_year is the data frame with all of the CO2 emissions 
+#' @param ghg_em_year is the data frame with all of the CO2 emissions by sector, fuel type and year
 #' @return value in tons of CO2
 #' @author Joslyn Fritz and Angie Bouche
 #' @example load in ghg dataset with fuel type, sector and year to sum total emissions

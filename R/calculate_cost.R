@@ -1,5 +1,5 @@
-#' compute net present value
-#' @param emissions_year is the data frame with all of the CO2 emissions from natural gas
+#' Cost: compute cost of CO2 emissions by sector if each ton is taxed at $1000
+#' @param emissions_year is the arrary with all of the CO2 emissions from 4 fuels in 5 sectors in 2010 and 2016
 #' @return cost of emissions in dollars
 #' @author Joslyn Fritz and Angie Bouche
 #' @example use example dataset created called 'emissions year'
