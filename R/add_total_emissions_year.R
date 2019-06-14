@@ -1,4 +1,4 @@
-#' Summarize: Add up total emisisons by year
+#' @title Summarize: Add up total emisisons by year
 #' 
 #' @param ghg is the data frame with all of the CO2 emissions by sector, fuel type and year
 #' @return value in tons of CO2

@@ -1,4 +1,4 @@
-#' Summarize: Average natural gas emissions by year
+#' @title Summarize: Average natural gas emissions by year
 #'
 #' @param ghg is the data frame with all of the CO2 emissions from natural gas
 #' @return value in tons of CO2
