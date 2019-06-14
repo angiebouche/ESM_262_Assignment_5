@@ -9,3 +9,4 @@ a = 1
 b = 3
 
 expect_that(a + b, equals(4))
+
