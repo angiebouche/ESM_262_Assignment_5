@@ -5,12 +5,13 @@
 #' @author Joslyn Fritz and Angie Bouche
 #' @example load in ghg dataset with fuel type, compute total emissions then divide by 10 and multiply by 0.1 to figure out the planetary warming from CO2 emissions. 
 #' @export 
-calc_total_warming = function(ghg) {
+calc_total_warming = function(ghg_data) {
   
-  global_warming= ghg %>%
+  global_warming= ghg_data %>%
     dplyr::select(Total_CO2_Emissions) %>%
     dplyr::summarize(total = (sum(Total_CO2_Emissions/10*0.1)))
   
   return(global_warming$total)
 }
 
+global_warming <- calc_total_warming(ghg_data = ghg)

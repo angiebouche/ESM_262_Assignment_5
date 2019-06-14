@@ -40,9 +40,9 @@ data(ghg)
 ```{r}
 
 #use ghg dataset as your argument and filter to see mean emissions of natural gas over the 7 years of data
-average_ng= function(ghg) {
+average_ng= function(ghg_data) {
 
-   ng_emissions = ghg %>%
+   ng_emissions = ghg_data %>%
     dplyr::filter(Fuel_Type == "Natural Gas") %>%
     dplyr::select(Total_CO2_Emissions) %>%
     dplyr::summarize(mean = (sum(Total_CO2_Emissions)/7))
@@ -56,9 +56,9 @@ average_ng= function(ghg) {
 ##Summarize: Add up total emisisons by year
 ```{r}
 #use ghg dataset. Group by year and find sum total emissions of each year in chronological order
-add_total_emissions_year= function(ghg) {
+add_total_emissions_year= function(ghg_data) {
 
-    annual_emissions = ghg %>%
+    annual_emissions = ghg_data %>%
     dplyr::group_by(Year) %>%
     dplyr::summarize(sum_col = sum(Total_CO2_Emissions)) %>%
     dplyr::arrange(-Year) %>%
@@ -98,9 +98,9 @@ calculate_cost = function(emissions_year) {
 ## Calculate Impact: 10 tons of CO2 emissions cause warming of .1 degree C
 ```{r}
 #use ghg dataset and select data on total co2 emissions accross all sectors and years. Divide by 10 since and multiply by .1 to get expected warming. 
-calc_total_warming = function(ghg) {
+calc_total_warming = function(ghg_data) {
   
-  global_warming= ghg %>%
+  global_warming= ghg_data %>%
     dplyr::select(Total_CO2_Emissions) %>%
     dplyr::summarize(total = (sum(Total_CO2_Emissions/10*0.1)))
   
@@ -114,9 +114,9 @@ calc_total_warming = function(ghg) {
 ##Calculate warming if coal emissions were replaced with renewable (zero emissions) sources
 ```{r}
 #use ghg dataset and select emissions from all fuel types except for coal. Select data on total co2 emissions accross all sectors and years. Divide by 10 since and multiply by .1 to get expected warming. 
-calc_warming_no_coal = function(ghg) {
+calc_warming_no_coal = function(ghg_data) {
   
-  less_emissions = ghg %>%
+  less_emissions = ghg_data %>%
     dplyr::filter(Fuel_Type != "Coal") %>%
     dplyr::select(Total_CO2_Emissions) %>%
     dplyr::summarize(total =(sum(Total_CO2_Emissions)/10*.1))

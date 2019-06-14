@@ -18,4 +18,4 @@ calculate_cost = function(emissions_year) {
   return(cost)
   
 }
-
+ cost <- calculate_cost(emissions_year = emissions_year)
