@@ -23,7 +23,7 @@ library(Assignment5)
 ghg <- read_csv("GHG.csv")
 
 # devtools::document() this will update the documentation
-# after running that code, it should open the help page!
+# after running that code, it should open the help page when the functions are called
 ```
 
 ## Summarize: Average natural gas emissions by year
