@@ -4,7 +4,7 @@
 \alias{calc_total_warming}
 \title{Calculate the impact of CO2 as it increases the warming of the planet.}
 \usage{
-calc_total_warming(ghg_data)
+calc_total_warming(ghg)
 }
 \arguments{
 \item{ghg_data}{is the data frame with all of the CO2 emissions from all fuel types and industries}

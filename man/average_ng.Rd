@@ -4,10 +4,10 @@
 \alias{average_ng}
 \title{Summarize: Average natural gas emissions by year}
 \usage{
-average_ng(ghg_data)
+average_ng(ghg)
 }
 \arguments{
-\item{ghg_data}{is the data frame with all of the CO2 emissions from natural gas}
+\item{ghg}{is the data frame with all of the CO2 emissions from natural gas}
 }
 \value{
 value in tons of CO2
