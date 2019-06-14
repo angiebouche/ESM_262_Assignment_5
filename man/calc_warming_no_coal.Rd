@@ -4,7 +4,7 @@
 \alias{calc_warming_no_coal}
 \title{Calculate the impact of CO2 as it increases the warming of the planet if we replaced coal with renewable energy sources (assume no emissions)}
 \usage{
-calc_warming_no_coal(ghg)
+calc_warming_no_coal(ghg_data)
 }
 \arguments{
 \item{ghg}{is the data frame with all of the CO2 emissions from all fuel types and industries}

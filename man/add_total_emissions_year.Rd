@@ -4,7 +4,7 @@
 \alias{add_total_emissions_year}
 \title{Summarize: Add up total emisisons by year}
 \usage{
-add_total_emissions_year(ghg)
+add_total_emissions_year(ghg_data)
 }
 \arguments{
 \item{ghg}{is the data frame with all of the CO2 emissions by sector, fuel type and year}

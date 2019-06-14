@@ -19,6 +19,7 @@ library(testthat)
 library(dplyr)
 library(devtools)
 library(roxygen2)
+library(Assignment5)
 ghg <- read_csv("GHG.csv")
 
 # devtools::document() this will update the documentation
